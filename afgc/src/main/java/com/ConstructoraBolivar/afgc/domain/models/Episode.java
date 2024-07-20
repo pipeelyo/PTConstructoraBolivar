@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Episode {
 
-    private Long id;
+    private Long episode_id;
     private String name;
     private LocalDate airDate;
     private String episode;
@@ -13,14 +13,14 @@ public class Episode {
     private String url;
     private String created;
 
-    public Episode(LocalDate airDate, List<String> characters, String created, String episode, Long id, String name, String url) {
-        this.airDate = airDate;
-        this.characters = characters;
-        this.created = created;
-        this.episode = episode;
-        this.id = id;
+    public Episode(Long episode_id, String name, LocalDate airDate, String episode, List<String> characters, String url, String created) {
+        this.episode_id = episode_id;
         this.name = name;
+        this.airDate = airDate;
+        this.episode = episode;
+        this.characters = characters;
         this.url = url;
+        this.created = created;
     }
 
     public LocalDate getAirDate() {
@@ -56,11 +56,11 @@ public class Episode {
     }
 
     public Long getId() {
-        return id;
+        return episode_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.episode_id = id;
     }
 
     public String getName() {

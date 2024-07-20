@@ -3,7 +3,7 @@ package com.ConstructoraBolivar.afgc.domain.models;
 import java.util.List;
 
 public class Character {
-    private Long id;
+    private Long character_id;
     private String name;
     private String status;
     private String species;
@@ -16,8 +16,8 @@ public class Character {
     private String url;
     private String created;
 
-    public Character(Long id, String name, String status, String species, String type, String gender, Location origin, Location location, String image, String url, String created) {
-        this.id = id;
+    public Character(Long character_id, String name, String status, String species, String type, String gender, Location origin, Location location, String image, String url, String created) {
+        this.character_id = character_id;
         this.name = name;
         this.status = status;
         this.species = species;
@@ -63,11 +63,11 @@ public class Character {
     }
 
     public Long getId() {
-        return id;
+        return character_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.character_id = id;
     }
 
     public String getImage() {

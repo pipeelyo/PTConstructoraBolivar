@@ -1,19 +1,28 @@
-package com.ConstructoraBolivar.afgc.domain.models;
+package com.ConstructoraBolivar.afgc.infrastructure.entities;
 
-import com.ConstructoraBolivar.afgc.infrastructure.entities.LocationEntity;
+import com.ConstructoraBolivar.afgc.domain.models.Location;
+import jakarta.persistence.*;
 
 import java.util.List;
 
-public class Location extends LocationEntity {
+@Entity
+public class LocationEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long location_id;
     private String name;
     private String type;
     private String dimension;
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private List<String> residents;
     private String url;
     private String created;
 
-    public Location(Long location_id, String name, String type, String dimension, List<String> residents, String url, String created) {
+    public LocationEntity() {}
+
+    public LocationEntity(Long location_id, String name, String type, String dimension, List<String> residents,  String url, String created) {
         this.location_id = location_id;
         this.name = name;
         this.type = type;
@@ -23,12 +32,20 @@ public class Location extends LocationEntity {
         this.created = created;
     }
 
-    public String getDimension() {
-        return dimension;
+    public static LocationEntity fromLocationModel(Location location) {
+        return new LocationEntity(
+          location.getId(),
+          location.getName(),
+          location.getType(),
+                location.getDimension(),
+                location.getResidents(),
+                location.getUrl(),
+                location.getCreated()
+        );
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public Location toDomainModel() {
+        return new Location(location_id, name, type, dimension, residents, url, created);
     }
 
     public String getCreated() {
@@ -37,6 +54,14 @@ public class Location extends LocationEntity {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
     }
 
     public Long getId() {

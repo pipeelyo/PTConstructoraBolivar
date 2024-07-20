@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LocationRepositoryPort {
-    Location save(Location episode);
+    Location save(Location location);
     Optional<Location> findById(Long id);
     Optional<Location> findByName(String name);
     List<Location> findAll();
